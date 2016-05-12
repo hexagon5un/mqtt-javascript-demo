@@ -26,7 +26,7 @@ var led_is_on    = null;
 // These are configs	
 var hostname     = "192.168.1.49";
 var port         = "9001";
-var clientId     = "mqtt_js_test_client";
+var clientId     = "mqtt_js_" + parseInt(Math.random() * 100000, 10);
 var temp_topic   = "home/outdoors/temperature";
 var status_topic = "home/outdoors/status";
 
@@ -57,6 +57,11 @@ function onMessageArrived(message) {
 	} else if (message.destinationName == status_topic) {
 		var status_heading = document.getElementById("led_status");
 		status_heading.innerHTML = "LED Status: " + message.payloadString;
+		if (message.payloadString == "on" || message.payloadString == "o"){
+			led_is_on = true;
+		} else {
+			led_is_on = false;
+		}
 	}
 }
 
