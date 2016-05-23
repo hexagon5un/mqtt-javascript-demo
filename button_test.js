@@ -19,7 +19,8 @@ var status_topic   = "home/outdoors/status";
 function connect(){
 	// Set up the client
 	client = new Paho.MQTT.Client(hostname, Number(port), clientId);
-	console.info('Connecting to Server: Hostname: ', hostname, '. Port: ', port, '. Client ID: ', clientId);
+	console.info('Connecting to Server: Hostname: ', hostname, 
+			'. Port: ', port, '. Client ID: ', clientId);
 
 	// set callback handlers
 	client.onConnectionLost = onConnectionLost;
